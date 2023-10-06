@@ -36,9 +36,9 @@ public class HelloController implements Initializable {
 
     ArrayList<Stat> stats = DBUtility.getStats();
 
-    for (stat stat : Stats)
+    for (Stats stat : stats)
     {
-      System.out.println(stat.getYear());
+      System.out.println(year.getyear());
     }
 
     setBarChart();
@@ -53,12 +53,12 @@ public class HelloController implements Initializable {
 
       // Set up the chart
       catagoryAxis.setLabel("Year");
-      numberAxis.setLabel("Amount paid");
-      barChart.setTitle("Insurence Claims");
+      numberAxis.setLabel("Money Paid");
+      barChart.setTitle("Values");
 
       // Create a series for the chart
       BarChart.Series<String, Double> series = new BarChart.Series<>();
-      series.setName("Value");
+      series.setName("Values");
 
       // Get the games from the database
       ArrayList<Stat> statistics = new ArrayList<>(); // creating an empty list to HOLD the video games
@@ -66,15 +66,17 @@ public class HelloController implements Initializable {
 
       // Create a series for the chart
       BarChart.Series<String, Double> seriesTwo = new BarChart.Series<>();
-      series.setName("Insurenece claims");
+      series.setName("Claims made");
 
       // Add the data to the series
       for (Stat stat : statistics)
       {
-        series.getData().add(new BarChart.Data<>(stat.getYear(), game.getGame_price()));
+        series.getData().add(new BarChart.Data<>(stat.getStats(), stat.getValue()));
+        seriesTwo.getData().add(new BarChart.Data<>(stat.getStats(), stat.getValue()));
       }
 
       // Add the series to the chart
       barChart.getData().add(series);
+      barChart.getData().add(seriesTwo);
     }
   }

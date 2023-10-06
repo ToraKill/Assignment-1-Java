@@ -10,7 +10,7 @@ public class DBUtility {
 
     private static String password = "student";
 
-    private static String url = "jdbc:mysql://localhost:3306/statistics";
+    private static String url = "jdbc:mysql://localhost:3306/assignment2/statistics";
 
     /**
      * This method will save a Person into the users table
@@ -18,7 +18,7 @@ public class DBUtility {
     public static String saveStat(Stat stat) throws SQLException {
         String responseMsg;
 
-        String sql = "INSERT INTO video_games (Year,Value) VALUES (?,?)";
+        String sql = "INSERT INTO statistics (Year,Value) VALUES (?,?)";
 
 
         //this is called a try...with resource block
@@ -28,11 +28,8 @@ public class DBUtility {
         )
         {
             // Setup the prepared statement
-
-
-
-            ps.setDouble(1, stat.getValue());
-            ps.setInt(2, stat.getYear());
+            ps.setDouble(1, value.getValue());
+            ps.setInt(2, year.getYear());
 
 
             // Excute the prepared statement
@@ -53,7 +50,7 @@ public class DBUtility {
         return responseMsg;
     }
 
-    public static <Stat> ArrayList<Stat> getStats()
+    public static ArrayList<Stat> getStats()
     {
         // Make a new ArrayList to hold our Game objects
         ArrayList<Stat> stats = new ArrayList<>();
@@ -79,17 +76,15 @@ public class DBUtility {
                 Double value = resultSet.getDouble("value");
                 int year = resultSet.getInt("year");
 
-
-
                 try{
-                    // Create the Game object
+                    // Create the stats object
                     Stat stat = new Stat(Year,Value);
 
                     // Add it to the list of games
-                    Stats.add(stat);
+                    stats.add(stat);
                 } catch (IllegalArgumentException e)
                 {
-                    System.out.printf(Year,Value");
+                    System.out.printf("year,value");
                 }
             }
         }
@@ -97,6 +92,8 @@ public class DBUtility {
         {
             e.printStackTrace();
         }
+
+        // Return the list of games back
         return stats;
     }
 
