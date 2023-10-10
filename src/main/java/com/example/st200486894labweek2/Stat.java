@@ -7,8 +7,9 @@ public class Stat {
     Double value;
 
     int year;
+    private Double Value;
 
-    public Double getYear() {
+    public int getYear() {
         return year;
     }
 
@@ -34,5 +35,9 @@ public class Stat {
 
         this.value = value;
         this.year = year;
+    }
+
+    public double getValue() {
+        this.Value = value;
     }
 }

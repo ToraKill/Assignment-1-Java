@@ -80,7 +80,6 @@ public class DBUtility {
                 int year = resultSet.getInt("year");
 
 
-
                 try{
                     // Create the Game object
                     Stat stat = new Stat(Year,Value);
@@ -89,7 +88,7 @@ public class DBUtility {
                     Stats.add(stat);
                 } catch (IllegalArgumentException e)
                 {
-                    System.out.printf(Year,Value");
+                    System.out.printf("Year,Values");
                 }
             }
         }

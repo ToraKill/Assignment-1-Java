@@ -18,7 +18,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class HelloController implements Initializable {
+public class HelloController<stat> implements Initializable {
 
 
   @FXML
@@ -36,7 +36,8 @@ public class HelloController implements Initializable {
 
     ArrayList<Stat> stats = DBUtility.getStats();
 
-    for (stat stat : Stats)
+
+    for (stat stat : Stat)
     {
       System.out.println(stat.getYear());
     }
@@ -66,12 +67,12 @@ public class HelloController implements Initializable {
 
       // Create a series for the chart
       BarChart.Series<String, Double> seriesTwo = new BarChart.Series<>();
-      series.setName("Insurenece claims");
+      series.setName("Insurence claims");
 
       // Add the data to the series
       for (Stat stat : statistics)
       {
-        series.getData().add(new BarChart.Data<>(stat.getYear(), game.getGame_price()));
+        series.getData().add(new BarChart.Data<>(stat.getYear(), stat.getValue()));
       }
 
       // Add the series to the chart
