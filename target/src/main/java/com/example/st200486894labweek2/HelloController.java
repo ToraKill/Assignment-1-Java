@@ -35,47 +35,33 @@ public class HelloController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     ArrayList<Stat> stats = DBUtility.getStats();
-
     for (Stats stat : stats)
     {
       System.out.println(year.getyear());
     }
-
     setBarChart();
-
   }
-
-    // set chart
     void setBarChart()
     {
-      // Clear the chart
       barChart.getData().clear();
-
-      // Set up the chart
       catagoryAxis.setLabel("Year");
       numberAxis.setLabel("Money Paid");
       barChart.setTitle("Values");
 
-      // Create a series for the chart
       BarChart.Series<String, Double> series = new BarChart.Series<>();
       series.setName("Values");
 
-      // Get the games from the database
-      ArrayList<Stat> statistics = new ArrayList<>(); // creating an empty list to HOLD the video games
-      statistics.addAll(DBUtility.getStats()); // add the games to the list
+      ArrayList<Stat> statistics = new ArrayList<>();
+      statistics.addAll(DBUtility.getStats());
 
-      // Create a series for the chart
       BarChart.Series<String, Double> seriesTwo = new BarChart.Series<>();
       series.setName("Claims made");
 
-      // Add the data to the series
       for (Stat stat : statistics)
       {
         series.getData().add(new BarChart.Data<>(stat.getStats(), stat.getValue()));
         seriesTwo.getData().add(new BarChart.Data<>(stat.getStats(), stat.getValue()));
       }
-
-      // Add the series to the chart
       barChart.getData().add(series);
       barChart.getData().add(seriesTwo);
     }

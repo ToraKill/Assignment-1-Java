@@ -9,11 +9,7 @@ public class Stat {
     int year;
     private Double Value;
 
-    public int getYear() {
-        return year;
-    }
-
-    public void setValue(Double game_price) {
+    public void setValue(Double value) {
         this.value = value;
     }
 
@@ -21,17 +17,17 @@ public class Stat {
         return year;
     }
 
-    public void setYear(int yaer) {
+    public void setYear(int year) {
         this.year = year;
     }
 
-    public Stat(LocalDate Year,int Value) {
+    public Stat(int Year, Double Value) {
         this.value = value;
         this.year = year;
 
     }
 
-    public Stat(LocalDate Year,int Value) {
+    public Stat(LocalDate Year, int Value) {
 
         this.value = value;
         this.year = year;
@@ -39,5 +35,7 @@ public class Stat {
 
     public double getValue() {
         this.Value = value;
-    }
-}
+
+
+        return 0;
+    }}

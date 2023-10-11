@@ -7,32 +7,20 @@ import java.util.ArrayList;
 
 public class DBUtility {
     private static String user = "wes";
-
     private static String password = "student";
-
     private static String url = "jdbc:mysql://localhost:3306/assignment2/statistics";
 
-    /**
-     * This method will save a Person into the users table
-     */
     public static String saveStat(Stat stat) throws SQLException {
         String responseMsg;
 
         String sql = "INSERT INTO statistics (Year,Value) VALUES (?,?)";
-
-
-        //this is called a try...with resource block
         try (
-             /*connection start*/   Connection conn = DriverManager.getConnection(url, user, password);
+                Connection conn = DriverManager.getConnection(url, user, password);
                 PreparedStatement ps = conn.prepareStatement(sql);
         )
         {
-            // Setup the prepared statement
             ps.setDouble(1, value.getValue());
             ps.setInt(2, year.getYear());
-
-
-            // Excute the prepared statement
             ps.executeUpdate();
 
             responseMsg = "Statistic Added";
@@ -46,57 +34,39 @@ public class DBUtility {
             e.printStackTrace();
             responseMsg = e.getMessage();
         }
-
         return responseMsg;
     }
-
     public static ArrayList<Stat> getStats()
     {
-        // Make a new ArrayList to hold our Game objects
         ArrayList<Stat> stats = new ArrayList<>();
 
-        // The SQL Query
         String sql = "SELECT * FROM statistics WHERE value > 0.01 LIMIT 100";
 
         try(
-                // Create a connection to the Database
                 Connection conn = DriverManager.getConnection(url, user, password);
-
-                // Create a statement
                 Statement statement = conn.createStatement();
-
-                // Excute the statement and hold the results in a ResultSet object
                 ResultSet resultSet = statement.executeQuery(sql);
-        )
-        {
-            // Loops through all the games returned from the database
+        ) {
             while (resultSet.next())
             {
-                // Get the values of the current ResultSet (the result set shows a current row and all the columns)
+
                 Double value = resultSet.getDouble("value");
                 int year = resultSet.getInt("year");
 
                 try{
-                    // Create the stats object
                     Stat stat = new Stat(Year,Value);
-
-                    // Add it to the list of games
                     stats.add(stat);
                 } catch (IllegalArgumentException e)
                 {
                     System.out.printf("year,value");
                 }
-            }
-        }
+            }}
         catch (Exception e)
         {
             e.printStackTrace();
         }
-
-        // Return the list of games back
         return stats;
     }
-
 
 }
 
