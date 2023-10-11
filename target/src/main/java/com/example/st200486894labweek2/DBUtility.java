@@ -27,7 +27,7 @@ public class DBUtility {
         }
         catch (SQLIntegrityConstraintViolationException e)
         {
-            return "Something went wrong!";
+            return "Somethings not right";
         }
         catch (Exception e)
         {

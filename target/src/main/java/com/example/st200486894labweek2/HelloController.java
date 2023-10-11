@@ -54,8 +54,8 @@ public class HelloController implements Initializable {
       ArrayList<Stat> statistics = new ArrayList<>();
       statistics.addAll(DBUtility.getStats());
 
-      BarChart.Series<String, Double> seriesTwo = new BarChart.Series<>();
-      series.setName("Claims made");
+      BarChart.Series<String, int > seriesTwo = new BarChart.Series<>();
+      series.setName("Years");
 
       for (Stat stat : statistics)
       {

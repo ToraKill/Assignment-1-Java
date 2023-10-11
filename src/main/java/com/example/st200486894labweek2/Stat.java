@@ -1,13 +1,25 @@
 package com.example.st200486894labweek2;
 
-import java.time.LocalDate;
-
 public class Stat {
+
+    int id;
 
     Double value;
 
     int year;
-    private Double Value;
+
+    //getters and setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Double getValue() {
+        return value;
+    }
 
     public void setValue(Double value) {
         this.value = value;
@@ -20,22 +32,16 @@ public class Stat {
     public void setYear(int year) {
         this.year = year;
     }
-
-    public Stat(int Year, Double Value) {
-        this.value = value;
-        this.year = year;
-
-    }
-
-    public Stat(LocalDate Year, int Value) {
-
+//constructers
+    public Stat(int id, Double value, int year) {
+        this.id = id;
         this.value = value;
         this.year = year;
     }
 
-    public double getValue() {
-        this.Value = value;
-
-
-        return 0;
-    }}
+    public Stat(Double value, int year) {
+        this.id = -1;
+        this.value = value;
+        this.year = year;
+    }
+}

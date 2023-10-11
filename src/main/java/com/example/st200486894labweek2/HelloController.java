@@ -8,16 +8,15 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+
 import java.net.URL;
 import java.sql.Array;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
-public class HelloController<stat> implements Initializable {
+public class HelloController implements Initializable {
+
 
   @FXML
   private BarChart<String, Double> barChart;
@@ -28,36 +27,42 @@ public class HelloController<stat> implements Initializable {
   @FXML
   private NumberAxis numberAxis;
 
+    
   @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+// array list that calls stats from dbutility
     ArrayList<Stat> stats = DBUtility.getStats();
     for (Stat stat : stats)
     {
+      //print id and year out to console
+      System.out.println(stat.getId());
       System.out.println(stat.getYear());
     }
     setBarChart();
   }
     void setBarChart()
-    {
-
+    {//labelling the chart sides
       barChart.getData().clear();
       catagoryAxis.setLabel("Year");
-      numberAxis.setLabel("Amount paid");
-      barChart.setTitle("Insurence Claims");
-
+      numberAxis.setLabel("Money Paid");
+      barChart.setTitle("Values");
+//using series to form barchart
       BarChart.Series<String, Double> series = new BarChart.Series<>();
-      series.setName("Value");
+      series.setName("Values");
 
       ArrayList<Stat> statistics = new ArrayList<>();
       statistics.addAll(DBUtility.getStats());
 
-      BarChart.Series<String, Double> seriesTwo = new BarChart.Series<>();
-      series.setName("Insurence claims");
+      //for calulating the values into individiual months
+      HashMap<String, Integer> yearsValues = new HashMap<>();
+
+      // if the year does exist, then increase the current value by the stat.getValue()
 
       for (Stat stat : statistics)
       {
-        series.getData().add(new BarChart.Data<>(stat.getYear(), stat.getValue()));
+        String year = stat.getYear() + "";
+        series.getData().add(new BarChart.Data<>(year, stat.getValue()));
       }
       barChart.getData().add(series);
     }
