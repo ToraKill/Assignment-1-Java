@@ -12,6 +12,15 @@ title{
 
 .tableviewss{
     -fx-opacity: .5;
+    -fx-font-family: 'Poppins', cursive;
+}
 
+.editid{
+    -fx-font: Ebrima;
+}
+
+.table-view .label{
+    -fx-font-family: 'Poppins', cursive;
+    -fx-fill: white;
 }
 

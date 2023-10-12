@@ -7,17 +7,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane fx:id="root" prefHeight="800.0" prefWidth="1400.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.st200486894labweek2.TableViewController">
    <children>
       <Label layoutX="649.0" layoutY="146.0" text="View Data" textFill="WHITE">
          <font>
-            <Font name="Corbel Light Italic" size="33.0" />
+            <Font name="Ebrima Bold" size="33.0" />
          </font>
       </Label>
-      <TableView fx:id="tableviewss" layoutX="498.0" layoutY="186.0" prefHeight="400.0" prefWidth="496.0" style="-fx-background-radius: 45;" stylesheets="@styles.css">
+      <TableView fx:id="tableviewss" layoutX="500.0" layoutY="208.0" prefHeight="400.0" prefWidth="496.0" style="-fx-background-radius: 45; -fx-border-radius: 50;" styleClass="tableview" stylesheets="@styles.css">
         <columns>
-          <TableColumn fx:id="eyeds" prefWidth="160.0" style="-fx-background-radius: 45;" text="Id's" />
+          <TableColumn id="editid" fx:id="eyeds" prefWidth="160.0" style="-fx-background-radius: 45; -fx-font: ebrima;" text="Id's" />
           <TableColumn fx:id="yearss" prefWidth="170.0" text="Years" />
             <TableColumn fx:id="valuess" prefWidth="170.0" style="-fx-background-radius: 45;" text="Values" />
         </columns>
@@ -25,20 +24,20 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="seechart" layoutX="713.0" layoutY="635.0" mnemonicParsing="false" onAction="#viewData" style="-fx-background-radius: 50;" stylesheets="@styles.css" text="See Chart" />
+      <Button fx:id="seechart" layoutX="714.0" layoutY="686.0" mnemonicParsing="false" onAction="#viewData" style="-fx-background-radius: 50;" stylesheets="@styles.css" text="See Chart" />
       <Label layoutX="60.0" layoutY="639.0" prefHeight="94.0" prefWidth="177.0" text="By the way I was " textFill="WHITE">
          <font>
-            <Font name="Candara Light Italic" size="20.0" />
+            <Font name="Ebrima Bold" size="16.0" />
          </font>
       </Label>
       <Label layoutX="14.0" layoutY="713.0" text="unsure as to how to add all those  " textFill="WHITE">
          <font>
-            <Font size="14.0" />
+            <Font name="Ebrima" size="16.0" />
          </font>
       </Label>
       <Label layoutY="742.0" text="insert statments into lines so I just did  just under hundred" textFill="WHITE">
          <font>
-            <Font name="System Italic" size="14.0" />
+            <Font name="Ebrima" size="15.0" />
          </font>
       </Label>
    </children>

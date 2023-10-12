@@ -63,24 +63,8 @@ public class HelloController implements Initializable {
       barChart.getData().clear();
       catagoryAxis.setLabel("Year");
       numberAxis.setLabel("Money Paid");
-      barChart.setTitle("Values");
+      barChart.setTitle("Insurence Claims");
 //using series to form barchart
-      BarChart.Series<String, Double> series = new BarChart.Series<>();
-      series.setName("Values");
-
-      ArrayList<Stat> statistics = new ArrayList<>();
-      statistics.addAll(DBUtility.getStats());
-
-      //for calulating the values into individiual months
-      HashMap<String, Integer> yearsValues = new HashMap<>();
-
-      // if the year does exist, then increase the current value by the stat.getValue()
-
-      for (Stat stat : statistics)
-      {
-        String year = stat.getYear() + "";
-        series.getData().add(new BarChart.Data<>(year, stat.getValue()));
-      }
-      barChart.getData().add(series);
+      barChart.getData().addAll(DBUtility.getBarChartData());
     }
   }

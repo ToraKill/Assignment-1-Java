@@ -1,5 +1,7 @@
 package com.example.st200486894labweek2;
 
+import javafx.scene.chart.XYChart;
+
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.Year;
@@ -63,7 +65,39 @@ public class DBUtility {
             e.printStackTrace();
         }
         return stats;
-    }}
+
+    }
+    public static XYChart.Series<String, Double> getBarChartData()
+    {
+        XYChart.Series<String, Double> series = new XYChart.Series<>();
+        series.setName("Values");
+
+        //use a try with resources block to access the database and automatically close the connection, statement
+        //and result set
+        String sql = String.format("SELECT year,sum(value) AS 'value' FROM statistics GROUP BY year;");
+
+        try (
+                Connection conn = DriverManager.getConnection(url,user,password);
+                Statement statement = conn.createStatement();
+                ResultSet resultSet = statement.executeQuery(sql);
+        )
+        {
+            //loop over the results returned and create new user objects
+            while (resultSet.next())
+            {
+                String year = String.valueOf(resultSet.getInt("year"));
+                series.getData().add(new XYChart.Data<>(year,
+                            resultSet.getDouble("value")));
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return series;
+    }
+
+}
 
 
 

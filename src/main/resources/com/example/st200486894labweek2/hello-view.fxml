@@ -19,12 +19,12 @@
           <NumberAxis fx:id="numberAxis" prefHeight="759.0" prefWidth="49.0" side="LEFT" upperBound="1000.0" />
         </yAxis>
       </BarChart>
-      <Label fx:id="title" alignment="TOP_CENTER" layoutX="634.0" layoutY="33.0" stylesheets="@styles.css" text="Injury Claims">
+      <Label fx:id="title" alignment="TOP_CENTER" layoutX="393.0" layoutY="34.0" stylesheets="@styles.css" text="Money Paid In Insurance Each Year">
          <font>
             <Font name="Courier New Bold" size="30.0" />
          </font></Label>
-      <Pane layoutX="1081.0" layoutY="27.0" prefHeight="49.0" prefWidth="72.0" style="-fx-background-color: orange;" />
-      <Label layoutX="908.0" layoutY="34.0" text="Value of Total Yearly Claims =" />
+      <Pane layoutX="1229.0" layoutY="21.0" prefHeight="49.0" prefWidth="72.0" style="-fx-background-color: orange;" />
       <Button fx:id="seeChart" layoutX="718.0" layoutY="679.0" mnemonicParsing="false" onAction="#viewChart" style="-fx-background-radius: 45;" text="See Chart" />
+      <Label layoutX="1064.0" layoutY="26.0" text="Value of Total Yearly Claims =" />
    </children>
 </AnchorPane>
