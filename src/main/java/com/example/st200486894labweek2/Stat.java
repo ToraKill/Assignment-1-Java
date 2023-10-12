@@ -8,6 +8,10 @@ public class Stat {
 
     int year;
 
+    //this was for a potential bug fix I'm not sure if ill be using it
+    public static void add(Stat newStat) {
+    }
+
     //getters and setters
     public int getId() {
         return id;
@@ -44,4 +48,6 @@ public class Stat {
         this.value = value;
         this.year = year;
     }
+
+
 }

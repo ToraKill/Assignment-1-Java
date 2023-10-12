@@ -1,0 +1,17 @@
+title{
+    -fx-color: white;
+
+}
+
+
+.root{
+    -fx-background-image:url('images/injurypic.png');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
+
+.tableviewss{
+    -fx-opacity: .5;
+
+}
+

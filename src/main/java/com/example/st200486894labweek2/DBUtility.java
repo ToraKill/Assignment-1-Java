@@ -17,63 +17,55 @@ public class DBUtility {
         String sql = "INSERT INTO statistics VALUES (?,?)";
 
         //try with resources will automatically close anything that was defined insid the () brackets
-        try(
-                Connection conn = DriverManager.getConnection(url,user,password);
+        try (
+                Connection conn = DriverManager.getConnection(url, user, password);
                 PreparedStatement ps = conn.prepareStatement(sql);
-        )
-        {
+        ) {
             //making prepared statements individually to set them for further use
-            ps.setInt(1,stat.getYear());
-            ps.setDouble(2,stat.getValue());
+            ps.setInt(1, stat.getYear());
+            ps.setDouble(2, stat.getValue());
 
             ps.executeUpdate();
 
             rspMessage = "Stat Added";
         }
         //this is a duplicate key
-        catch (SQLIntegrityConstraintViolationException e)
-        {
+        catch (SQLIntegrityConstraintViolationException e) {
             rspMessage = "Stat already defined";
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return rspMessage;
     }
+
     //creating an arraylist ro get stats from each piece of data
-    public static ArrayList<Stat> getStats()
-    {
+    public static ArrayList<Stat> getStats() {
         ArrayList<Stat> stats = new ArrayList<>();
 
-        //use a try with resources block to access the database and automatically close the connection, statement and result set
+        //use try with resources to access the database and on its own to drop/cut connection, statement and result
         String sql = "SELECT * FROM statistics";
 
         try (
                 //making connection to password user and url
-                Connection conn = DriverManager.getConnection(url,user,password);
+                Connection conn = DriverManager.getConnection(url, user, password);
                 Statement statement = conn.createStatement();
                 ResultSet resultSet = statement.executeQuery(sql);
-        )
-        {
+        ) {
             //loop over the results returned and create new user objects
-            while (resultSet.next())
-            {
-               Stat newStat = new Stat(resultSet.getInt("id"),
-                       (resultSet.getDouble("value")),
-                       (resultSet.getInt("year")));
+            while (resultSet.next()) {
+                Stat newStat = new Stat(resultSet.getInt("id"),
+                        (resultSet.getDouble("value")),
+                        (resultSet.getInt("year")));
 
                 stats.add(newStat);
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return stats;
-    }
+    }}
 
-}
+
 
 
 

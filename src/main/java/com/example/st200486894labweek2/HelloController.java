@@ -6,9 +6,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Array;
 import java.sql.SQLException;
@@ -27,7 +30,21 @@ public class HelloController implements Initializable {
   @FXML
   private NumberAxis numberAxis;
 
-    
+  @FXML
+  private Label title;
+
+  @FXML
+  private AnchorPane anchor;
+
+  @FXML
+  private Button seeChart;
+
+
+  @FXML
+  void viewChart(ActionEvent event) throws IOException {
+    SceneChanger.changeScenes(event, "table-view.fxml");
+  }
+
   @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
